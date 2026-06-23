@@ -116,7 +116,7 @@ int main(void) {
     case X_SQUARE:
     case O_SQUARE:
       draw_grid(grid);
-      printf(">>> %c wins!\n", result == X_SQUARE ? 'X' : 0);
+      printf(">>> %c wins!\n", result == X_SQUARE ? 'X' : 'O');
       ply = 9;
       break;
     }
