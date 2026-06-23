@@ -1,0 +1,16 @@
+#+TITLE: TIC TAC TOE
+
+Simple terminal based [[https://en.wikipedia.org/wiki/Tic-tac-toe][Tic-tac-toe]].
+
+* Compile
+To compile the game you need ~gcc~ and ~make~
+
+#+BEGIN_SRC shell
+  make -B main
+#+END_SRC
+
+* Running
+To run the game from your terminal.
+#+BEGIN_SRC shell
+  ./main
+#+END_SRC
