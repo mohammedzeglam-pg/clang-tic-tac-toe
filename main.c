@@ -62,7 +62,7 @@ int prompt(int p, int grid[]) {
   if (square == 0) {
     return square;
   }
-  if (grid[square - 1] != 0) {
+  if (grid[square - 1] != BLANK_SQUARE) {
     printf("Square %d is occupied, try again\n", square);
     return -1;
   }
