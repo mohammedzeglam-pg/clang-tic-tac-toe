@@ -53,9 +53,10 @@ int prompt(int p, int grid[]) {
   int square;
 
   printf("%c's turn: Pick a square, 0 to quit: ", p % 2 ? 'O' : 'X');
+  // FIXME: proper handling user input `fgets/3`.
   scanf("%d", &square);
   if (square < 0 || square > 9) {
-    puts("Value out O_BF range");
+    puts("Value out range");
     return -1;
   }
   if (square == 0) {
@@ -86,8 +87,11 @@ int calculate_winner(int grid[]) {
 
 int main(void) {
   int grid[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-  puts("Tic-Tac_Toe");
+  puts("Tic Tac Toe");
+
   int ply = 0, p;
+
+  // game loop
   while (ply < 9) {
 
     draw_grid(grid);
