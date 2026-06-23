@@ -79,8 +79,8 @@ int calculate_winner(int grid[]) {
   RETURN_IF_ALL_EQUAL(grid[1], grid[4], grid[7]);
   RETURN_IF_ALL_EQUAL(grid[2], grid[5], grid[8]);
   // DIAGONAL
-  RETURN_IF_ALL_EQUAL(grid[0], grid[1], grid[2]);
-  RETURN_IF_ALL_EQUAL(grid[3], grid[4], grid[5]);
+  RETURN_IF_ALL_EQUAL(grid[0], grid[4], grid[8]);
+  RETURN_IF_ALL_EQUAL(grid[2], grid[4], grid[6]);
 
   return 0;
 }
