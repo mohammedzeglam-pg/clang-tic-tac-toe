@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define X_SQUARE 1
 #define O_SQUARE -1
@@ -80,31 +81,55 @@ int calculate_winner(int grid[]) {
   return 0;
 }
 
+int computer(int grid[]) {
+  int square;
+  do {
+    square = rand() % 9;
+  } while (grid[square] != BLANK_SQUARE);
+  square++;
+  printf("The computer moves to square %d\n", square);
+  return square;
+}
+
 int main(void) {
   int grid[] = {BLANK_SQUARE, BLANK_SQUARE, BLANK_SQUARE,
                 BLANK_SQUARE, BLANK_SQUARE, BLANK_SQUARE,
                 BLANK_SQUARE, BLANK_SQUARE, BLANK_SQUARE};
 
+  int ply = 0, square, players;
+
+  srand((unsigned)time(NULL));
+
   puts("Tic Tac Toe");
-
-  int ply = 0, p;
-
+  printf("Number of players (0, 1, 2): ");
+  scanf("%d", &players);
+  if (players < 0 || players > 2)
+    return EXIT_FAILURE;
   // game loop
   while (ply < 9) {
 
     draw_grid(grid);
+    if (players == 0) {
+      square = computer(grid);
+    } else if (players == 1) {
+      if (ply % 2) {
+        square = computer(grid);
+      } else {
+        while ((square = prompt(ply, grid)) == -1)
+          ;
+      }
+    } else {
+      while ((square = prompt(ply, grid)) == -1)
+        ;
+    }
 
-    p = prompt(ply, grid);
-
-    if (p == 0) {
+    if (square == 0) {
       break;
-    } else if (p == -1) {
-      continue;
     }
 
     // update grid
 
-    grid[p - 1] = ply % 2 ? O_SQUARE : X_SQUARE;
+    grid[square - 1] = ply % 2 ? O_SQUARE : X_SQUARE;
 
     // calculate winner
 
